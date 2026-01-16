@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { SiteData, ViewType, PortfolioItem, ServiceItem } from './types';
+import { SiteData, ViewType } from './types';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Portfolio from './components/Portfolio';
@@ -69,8 +69,12 @@ const DEFAULT_DATA: SiteData = {
 
 const App: React.FC = () => {
   const [siteData, setSiteData] = useState<SiteData>(() => {
-    const saved = localStorage.getItem('chokho_site_data');
-    return saved ? JSON.parse(saved) : DEFAULT_DATA;
+    try {
+      const saved = localStorage.getItem('chokho_site_data');
+      return saved ? JSON.parse(saved) : DEFAULT_DATA;
+    } catch (e) {
+      return DEFAULT_DATA;
+    }
   });
 
   const [view, setView] = useState<ViewType>('HOME');

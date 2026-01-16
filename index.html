@@ -16,6 +16,7 @@
             color: #ffffff;
             margin: 0;
             scroll-behavior: smooth;
+            overflow-x: hidden;
         }
         .bg-purple-gradient {
             background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
@@ -25,11 +26,28 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+        /* 스크롤바 커스텀 */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #000;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #444;
+        }
     </style>
-<script type="importmap">
+    <script type="importmap">
 {
   "imports": {
-    "react": "https://esm.sh/react@^19.2.3",
+    "react": "https://esm.sh/react@18.2.0",
+    "react-dom": "https://esm.sh/react-dom@18.2.0",
+    "react-dom/client": "https://esm.sh/react-dom@18.2.0/client",
+    "react/jsx-runtime": "https://esm.sh/react@18.2.0/jsx-runtime",
     "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
     "react/": "https://esm.sh/react@^19.2.3/"
   }
@@ -38,5 +56,7 @@
 </head>
 <body>
     <div id="root"></div>
+    <!-- 엔트리 포인트 스크립트 명시 -->
+    <script type="module" src="index.tsx"></script>
 </body>
 </html>
